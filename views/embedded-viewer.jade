@@ -1,0 +1,22 @@
+extends embed
+
+block content
+  #shipviewer
+
+  script(src="http://www.eveonline.com/ccp/js/scripts-130123155501.min.js")
+  script(src="/js/shipviewer.js")
+  script
+    var sv = new CCPShipViewer({
+      parentElementId: 'shipviewer',
+      height: #{height},
+      width: #{width},
+      assetsPath: 'http://web.ccpgamescdn.com/shipviewer/assets/',
+      quality: 0,
+      boosterGain: 0.6,
+      showOverlay: true,
+      defaultShip: '#{shipName}',
+      onLoaded: function() {
+      },
+      afterShipChanged: function(shipdata) {
+      }
+    });

@@ -1,0 +1,63 @@
+!!! 5
+html
+  head
+    meta(charset="utf-8")
+    title EVE Online Ship Viewer
+
+    meta(itemprop="name", content="EVE Online Ship Viewer")
+    meta(itemprop="description", content="View ships from New Eden in your browser.")
+
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+    link(rel="stylesheet", href="/css/bootstrap.css")
+    style
+      body {
+        padding-top: 60px;
+      }
+      footer {
+        font-size: 0.8em;
+      }
+    link(rel="stylesheet", href="/css/bootstrap-responsive.css")
+
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js")
+    script(src="http://www.eveonline.com/ccp/js/libs/modernizr.custom.js")
+
+  body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.brand(href="/") EVE Ship Viewer
+          ul.nav
+            li.active
+              a(href="/") Home
+
+    .container
+      block content
+
+    .container
+      footer
+        hr
+        .row
+          .span6
+            p EVE Online is Copyright &copy; <a href="http://www.ccpgames.com/">CCP</a> 1997-2013.
+          .span6
+            p Built by <a href="http://gittip.com/martindale">Eric Martindale</a>.
+
+    block scripts
+
+    script(type="text/javascript")
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-247942-16']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();

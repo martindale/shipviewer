@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1(style="text-transform: capitalize;") #{shipName}
+
+  .pull-right
+    h2 Embed
+    form
+      label(for="width") Width
+      input(type="text", name="width", value="940")
+      label(for="height") Height
+      input(type="text", name="height", value="618")
+      label(for="embed")
+      textarea(name="embed", onclick="select()") <iframe src="http://shipviewer.ericmartindale.com/ships/#{shipName}/embed" scrolling="no" frameborder="0" width="940" height="618"></iframe>
+
+  iframe(src="/ships/#{shipName}/embed?width=780&height=526", scrolling="no", frameborder="0", width="780", height="526")
+
+  .row
+    .span6
+      h2 Stats

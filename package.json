@@ -1,0 +1,9 @@
+{
+  "name": "shipviewer",
+  "description": "eve online ship viewer",
+  "version": "0.0.1",
+  "main": "shipviewer.js",
+  "dependencies": {
+    "express": "3.x"
+  }
+}

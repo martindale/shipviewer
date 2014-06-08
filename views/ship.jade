@@ -1,20 +1,50 @@
 extends layout
 
 block content
-  h1(style="text-transform: capitalize;") #{shipName}
+  h1 #{ship.name}
 
-  .pull-right
-    h2 Embed
-    form
-      label(for="width") Width
-      input(type="text", name="width", value="940")
-      label(for="height") Height
-      input(type="text", name="height", value="618")
-      label(for="embed")
-      textarea(name="embed", onclick="select()") <iframe src="http://shipviewer.ericmartindale.com/ships/#{shipName}/embed" scrolling="no" frameborder="0" width="940" height="618"></iframe>
-
-  iframe(src="/ships/#{shipName}/embed?width=780&height=526", scrolling="no", frameborder="0", width="780", height="526")
 
   .row
-    .span6
-      h2 Stats
+    .span8
+      .panel
+        iframe(src="/ships/#{shipName}/embed?width=780&height=526", scrolling="no", frameborder="0", width="100%", height="526")
+
+    .span4
+      .panel
+        .module(style="min-height:512px;")
+          h2 Stats
+          table.table.stats
+            tr
+              td
+                strong Class:
+              td #{ship.shipClass}
+            tr
+              td
+                strong Length:
+              td #{ship.length}
+            tr
+              td
+                strong Max Velocity:
+              td #{ship.maxVelocity}
+            tr
+              td
+                strong Role:
+              td #{ship.role}
+            tr
+              td
+                strong Primary Weaponry:
+              td #{ship.primaryWeapon}
+            tr
+              td
+                strong Race:
+              td #{ship.race}
+
+          h2 Embed
+          p You can adjust the width and height parameters in the embedded code to get a size that'll fit your needs.  Don't forget to adjust both sets!
+          form
+            //-label(for="width") Width
+            //-input(type="text", name="width", value="940")
+            //-label(for="height") Height
+            //-input(type="text", name="height", value="618")
+            label(for="embed")
+            textarea(name="embed", onclick="select()", style="box-sizing: border-box; width:100%;") <iframe src="http://shipviewer.ericmartindale.com/ships/#{shipName}/embed?width=940&height=618" scrolling="no" frameborder="0" width="940" height="618"></iframe>

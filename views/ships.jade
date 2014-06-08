@@ -1,0 +1,11 @@
+extends layout
+
+block content
+
+  .row
+    .span12.panel
+      h1 Ships
+      p
+        - for ship in ships
+          a.uppercase(href="/ships/#{ship}") #{ship}
+          |  

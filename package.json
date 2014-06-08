@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "main": "shipviewer.js",
   "dependencies": {
-    "express": "3.x"
+    "express": "3.x",
+    "restler": "~2.0.1"
   }
 }

@@ -10,14 +10,49 @@ html
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
     link(rel="stylesheet", href="/css/bootstrap.css")
+    link(rel="stylesheet", href="/css/bootstrap-responsive.css")
+
     style
       body {
         padding-top: 60px;
+        background: #000 url('http://www.eveonline.com/ccp/img/layout/bg.jpg') no-repeat 50% 0;
+        min-width: 1100px;
       }
       footer {
         font-size: 0.8em;
+        text-align:right;
+        color: rgb(153, 153, 153);
       }
-    link(rel="stylesheet", href="/css/bootstrap-responsive.css")
+      .uppercase {
+        text-transform: capitalize;
+      }
+      table.table.stats td:first-child {
+        text-align:right;
+      }
+      .panel {
+        background: rgba(255,255,255,0.2);
+        padding: 10px;
+        margin: 0 0 20px 0;
+      }
+      .module {
+        padding: 10px;
+        background: #eaeaea url("http://www.eveonline.com/ccp/img/layout/panel_bg.png") repeat-x left bottom;
+      }
+      h1 {
+        color: #fff;
+        text-transform: uppercase;
+        text-shadow: rgba(0, 0, 0, 0.701961) 1px 1px 3px;
+        font-family: EngschriftDIND, Arial, sans-serif;
+      }
+      .hero-unit {
+        background: url('http://web.ccpgamescdn.com/eveonlineassets/expansion/exp18/bg.jpg');
+        background-size: 100% auto;
+        min-height: 350px;
+        color: #fff;
+      }
+      .shiplist {
+        font-weight: bold;
+      }
 
     script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js")
     script(src="http://www.eveonline.com/ccp/js/libs/modernizr.custom.js")
@@ -30,20 +65,26 @@ html
           ul.nav
             li.active
               a(href="/") Home
+            li.dropdown
+              a.dropdown-toggle(href="#", data-toggle="dropdown") Ships 
+                b.caret
+              ul.dropdown-menu(style="max-height: 400px; overflow-y: scroll; overflow-x: hidden;")
+                - for ship in ships
+                  li
+                    a.uppercase(href="/ships/#{ship}") #{ship}
 
     .container
       block content
 
     .container
-      footer
-        hr
-        .row
-          .span6
-            p EVE Online is Copyright &copy; <a href="http://www.ccpgames.com/">CCP</a> 1997-2013.
-          .span6
-            p Built by <a href="http://gittip.com/martindale">Eric Martindale</a>.
+      .row
+        .span12
+          footer.panel
+            p Built by <a href="http://gittip.com/martindale">Eric Martindale</a>.  EVE Online is Copyright &copy; <a href="http://www.ccpgames.com/">CCP</a> 1997-2013.
 
     block scripts
+
+    script(src="/js/bootstrap.min.js")
 
     script(type="text/javascript")
       var _gaq = _gaq || [];

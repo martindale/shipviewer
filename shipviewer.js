@@ -2,6 +2,8 @@ var express = require('express')
   , app = express()
   , rest = require('restler');
 
+var _ = require('lodash');
+
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'jade');
 app.use(express.bodyParser());
@@ -49,6 +51,7 @@ rest.get('https://web.ccpgamescdn.com/shipviewer/assets/shipresources.js').on('c
 
   rest.get('https://web.ccpgamescdn.com/shipviewer/assets/shipfacts.js').on('complete', function( shipFacts ) {
 
+
     var facts = eval( shipFacts )
     
     app.locals.shipFacts = facts ;
@@ -58,9 +61,24 @@ rest.get('https://web.ccpgamescdn.com/shipviewer/assets/shipresources.js').on('c
       shipClasses[ app.locals.shipFacts[ship.toLowerCase()].shipClass ] = app.locals.shipFacts[ship.toLowerCase()].shipClass;
     });
     app.locals.shipClasses = Object.keys(shipClasses).sort();
+  
+    startServer( 5001 );
 
-    app.listen(5001);
+ });
 
-  });
+});
 
+function listen( port ) {
+  var port = port || 0;
+  var http = require('http');
+  var server = http.createServer( app ).listen( port );
+ 
+  server.on('listening', function() {
+    console.log('server listening', server.address().port);
+  })
+}
+
+var startServer = _.debounce( listen , 30000 , {
+  leading: true,
+  trailing: false
 });

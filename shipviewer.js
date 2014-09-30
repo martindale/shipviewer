@@ -6,10 +6,6 @@ var _ = require('lodash');
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'jade');
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(express.errorHandler());
-app.use(app.router);
 
 app.locals = {
     width: 940

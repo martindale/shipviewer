@@ -25,7 +25,7 @@ block content
                 a.capitalize(href="#", data-for="#{shipClass.toLowerCase()}") #{shipClass}s
 
 block scripts
-  script
+  script.
     $('.class-control a').click(function() {
       var self = this;
       $('.shiplist li[data-class="'+$(self).data('for')+'"]').fadeTo('slow', 1.0);
